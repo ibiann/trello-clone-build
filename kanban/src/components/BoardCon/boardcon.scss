@@ -14,9 +14,15 @@
     background-color: rgba(0, 0, 0, 0.24);
     border-right: 8px;
   }
-}
 
-.not-found {
-  padding: $gap;
-  color: red;
+  .not-found {
+    padding: $gap;
+    color: red;
+  }
+  //column dnd styles
+  .column-drop-view {
+    // background-color: rgba(150, 150, 200, 0.1);
+    // border: 1px #abc;
+    margin: 5px 45px 5px 5px;
+  }
 }

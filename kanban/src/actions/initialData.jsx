@@ -28,8 +28,7 @@ export const initialData = {
               boardId: "board-1",
               columnId: "column-1",
               title: " ",
-              cover:
-                "https://picsum.photos/300/300",
+              cover: "https://picsum.photos/300/300",
             },
             {
               id: "card-2",

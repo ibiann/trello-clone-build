@@ -13,7 +13,7 @@
     color: black;
     padding: 0 8px;
   }
-  header {
+  header.column-drag-handle {
     padding-left: 15px;
     height: $column-header-height;
     line-height: $column-header-height;
@@ -21,6 +21,7 @@
     font-weight: 600;
     border-top-left-radius: $element-radius;
     border-top-right-radius: $element-radius;
+    cursor: pointer;
   }
   footer {
     padding-left: $gap;
@@ -29,8 +30,7 @@
     border-bottom-left-radius: $element-radius;
     border-bottom-right-radius: $element-radius;
   }
-  ul.card-list {
-    list-style-type: none;
+  .card-list {
     margin: 0;
     max-height: calc(
       100% - #{$column-header-height} - #{$column-footer-height}
@@ -45,6 +45,21 @@
     &::-webkit-scrollbar-thumb {
       background-color: darken($color: #000000, $amount: 15);
       border-right: $element-radius;
+    }
+    //card-dnd-styles
+    .card-ghost {
+      transition: transform 0.18s ease;
+      transform: rotateZ(5deg);
+    }
+
+    .card-ghost-drop {
+      transition: transform 0.18s ease-in-out;
+      transform: rotateZ(0deg);
+    }
+    .card-drop-view {
+      // background-color: rgba(150, 150, 200, 0.1);
+      // border: 1px #abc;
+      margin: 5px;
     }
   }
 }
