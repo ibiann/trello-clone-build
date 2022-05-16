@@ -1,0 +1,18 @@
+@import "../../settings";
+
+li.input-items {
+  background-color: white;
+  padding: $gap;
+  border-radius: $card-border-radius;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  &:not(:last-child) {
+    margin-bottom: $gap;
+  }
+  img {
+    display: block;
+    width: calc(100% + 2 * #{$gap});
+    margin: -10px 0 10px (-10px);
+    border-bottom-left-radius: $card-border-radius;
+    border-bottom-right-radius: $card-border-radius;
+  }
+}

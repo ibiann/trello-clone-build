@@ -1,0 +1,11 @@
+@import "../../settings";
+
+.app-navbar-board {
+  padding-left: $gap;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  color: black;
+  font-size: 1.1rem;
+}

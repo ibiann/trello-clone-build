@@ -1,0 +1,50 @@
+@import "../../settings";
+
+.columns {
+  flex: 0 0 auto;
+  width: 300px;
+  height: cacl(100% - #{$gap});
+  &:not(:first-child) {
+    margin-left: $gap;
+  }
+  margin-left: $gap;
+  > * {
+    background-color: white;
+    color: black;
+    padding: 0 8px;
+  }
+  header {
+    padding-left: 15px;
+    height: $column-header-height;
+    line-height: $column-header-height;
+    font-size: 16px;
+    font-weight: 600;
+    border-top-left-radius: $element-radius;
+    border-top-right-radius: $element-radius;
+  }
+  footer {
+    padding-left: $gap;
+    height: $column-footer-height;
+    line-height: $column-footer-height;
+    border-bottom-left-radius: $element-radius;
+    border-bottom-right-radius: $element-radius;
+  }
+  ul.input-list {
+    list-style-type: none;
+    margin: 0;
+    max-height: calc(
+      100% - #{$column-header-height} - #{$column-footer-height}
+    );
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical {
+      width: 11px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: darken($color: #000000, $amount: 15);
+      border-right: $element-radius;
+    }
+  }
+}

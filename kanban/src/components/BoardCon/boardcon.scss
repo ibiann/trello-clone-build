@@ -1,0 +1,17 @@
+@import "../../settings";
+
+.app-column-board {
+  display: flex;
+  margin: 0 $gap $gap;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:horizontal {
+    height: 11px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.24);
+    border-right: 8px;
+  }
+}
