@@ -1,6 +1,6 @@
 @import "../../settings";
 
-li.input-items {
+li.card-items {
   background-color: white;
   padding: $gap;
   border-radius: $card-border-radius;
@@ -8,7 +8,7 @@ li.input-items {
   &:not(:last-child) {
     margin-bottom: $gap;
   }
-  img {
+  img.card-cover {
     display: block;
     width: calc(100% + 2 * #{$gap});
     margin: -10px 0 10px (-10px);
