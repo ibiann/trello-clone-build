@@ -1,0 +1,117 @@
+@import "./settings";
+
+.body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  list-style: 1.3em;
+}
+
+.kanban-clone {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 40px 50px 1fr;
+  line-height: 1.3em;
+  background-color: #fff;
+  background: url("https://picsum.photos/1920/1080") no-repeat center;
+
+  .app-navbar {
+    padding-left: $gap;
+    display: flex;
+    align-items: center;
+    &.top {
+      // background-color: rgb(0, 0, 0);
+      // background-color: rgba(0, 0, 0, 0.4);
+      // color: white;
+      // font-weight: bold;
+      background-color: transparent;
+      backdrop-filter: blur(20px);
+      color: black;
+    }
+    &.board {
+      background-color: transparent;
+      backdrop-filter: blur(20px);
+      color: black;
+    }
+  }
+  .app-column-board {
+    display: flex;
+    margin: 0 $gap $gap;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:horizontal {
+      height: 11px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.24);
+      border-right: 8px;
+    }
+
+    .columns {
+      flex: 0 0 auto;
+      width: 300px;
+      height: cacl(100% - #{$gap});
+      &:not(:first-child) {
+          margin-left: $gap;
+      }
+      margin-left: $gap;
+      > * {
+        background-color: white;
+        color: black;
+        padding: 0 8px;
+      }
+      header {
+        padding-left: 15px;
+        height: $column-header-height;
+        line-height: $column-header-height;
+        font-size: 16px;
+        font-weight: 600;
+        border-top-left-radius: $element-radius;
+        border-top-right-radius: $element-radius;
+      }
+      footer {
+        padding-left: $gap;
+        height: $column-footer-height;
+        line-height: $column-footer-height;
+        border-bottom-left-radius: $element-radius;
+        border-bottom-right-radius: $element-radius;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        max-height: calc(
+          100% - #{$column-header-height} - #{$column-footer-height}
+        );
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          -webkit-appearance: none;
+        }
+        &::-webkit-scrollbar:vertical {
+          width: 11px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: darken($color: #000000, $amount: 15);
+          border-right: $element-radius;
+        }
+        li {
+          background-color: white;
+          padding: $gap;
+          border-radius: $element-radius;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+          &:not(:last-child) {
+            margin-bottom: $gap;
+          }
+          img {
+            display: block;
+            width: calc(100% + 2 * #{$gap});
+            margin: -10px 0 10px (-10px);
+            border-bottom-left-radius: $element-radius;
+            border-bottom-right-radius: $element-radius;
+          }
+        }
+      }
+    }
+  }
+}

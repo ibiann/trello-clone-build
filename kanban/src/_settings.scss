@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap");
+//height
+$app-navbar-height: 4.4vh;
+$navbar-board-height: 4.4vh;
+$board-content-height: 88vh;
+
+$navbar-element-height: 75%;
+$navbar-element-border-height: 5px;
+$navbar-element-border-radius: 5px;
+$column-header-height: 36px;
+$column-footer-height: 36px;
+// $card-border-radius: 5px;
+$element-radius: 5px;
+
+//Gaps
+$gap: 10px;
+
+//icon size
+$icon-size: 16px;
+
+//Colors
+$color: rgb(236, 240, 241);
+$color-2: rgb(236, 236, 236);
+$color-3: rgb(191, 191, 191);
+$color-4: rgb(219, 10, 91);
+$color-5: rgb(236, 240, 241);
+$app-board-bg-color: rgb(132, 140, 207);
+$app-navbar-color: rgb(205, 209, 228);
+$app-navbar-bg-color: rgb(82, 78, 183);
+$board-list-bg-color: rgb(238, 238, 238);
+$app-navbar-board-bg-color: rgb(35, 37, 42);
+$content-menu-bg-color: rgb(171, 183, 183);
+$items-elements-color: #ffff;
+$board-content-column-color: #ebecf0;
+
+$hover-bg-color: rgba(0, 0, 0, 0.24);
+$fade-text-color: #5e6c84;
+
+
+//Frame
+$screen-lg: 1261px;
+$screen-md: 992px;
+$screen-sm: 768px;
+$screen-iphone: 488px;
+
