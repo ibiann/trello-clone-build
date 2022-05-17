@@ -2,7 +2,7 @@
 
 .app-column-board {
   height: $board-content-height;
-  // display: flex;
+  display: flex;
   // margin: 0 $gap $gap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -27,5 +27,23 @@
     // background-color: rgba(150, 150, 200, 0.1);
     // border: 1px #abc;
     margin: 5px 45px 5px 5px;
+  }
+
+  .add-new-column {
+    width: 250px;
+    height: 32px;
+    line-height: 32px;
+    padding: 4px 0 4px 15px;
+    cursor: pointer;
+    color: white;
+    margin-left: $gap;
+    font-size: 15px;
+    background-color: hsla(0, 0%, 100%, 0.24);
+    margin-top: $gap;
+    margin-left: $gap;
+    border-radius: $element-radius;
+    &:hover {
+      background-color: hsla(0, 0%, 100%, 0.34)
+    }
   }
 }

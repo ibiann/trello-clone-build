@@ -4,8 +4,10 @@ import { isEmpty } from "lodash";
 import "./boardcon.scss";
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
+import { applyDrag } from "../../util/dragDrop";
 
 import { initialData } from "../../actions/initialData";
+import AddIcon from '@mui/icons-material/Add';
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -33,6 +35,28 @@ function BoardCon() {
 
   const onColumnDrop = (dropResult) => {
     console.log(dropResult);
+    let newColumns = [...columns];
+    newColumns = applyDrag(newColumns, dropResult);
+
+    let newBoard = { ...board };
+    newBoard.columnOrder = newColumns.map((c) => c.id);
+    newBoard.columns = newColumns;
+    console.log(newBoard);
+
+    setColumns(newColumns);
+    setBoard(newBoard);
+  };
+
+  const onCardDrop = (columnId, dropResult) => {
+    if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+      let newColumns = [...columns];
+
+      let currentColumn = newColumns.find((c) => c.id === columnId);
+      currentColumn.cards = applyDrag(currentColumn.cards, dropResult);
+      currentColumn.cardOrder = currentColumn.cards.map((i) => i.id);
+      // console.log(newColumns);
+      setColumns(newColumns);
+    }
   };
 
   return (
@@ -50,10 +74,13 @@ function BoardCon() {
       >
         {columns.map((column, index) => (
           <Draggable key={index}>
-            <Column column={column} />
+            <Column column={column} onCardDrop={onCardDrop} />
           </Draggable>
         ))}
       </Container>
+      <div className="add-new-column">
+        <AddIcon className="mui-icon" /> Add another list
+      </div>
     </div>
   );
 }

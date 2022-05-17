@@ -1,16 +1,13 @@
-import React from "react";
+import * as React from "react";
 import { Container, Draggable } from "react-smooth-dnd";
 import "./column.scss";
 import Card from "../Card/Card";
 import { mapOrder } from "../../util/sort";
+import AddIcon from "@mui/icons-material/Add";
 
 function Column(props) {
-  const { column } = props;
+  const { column, onCardDrop } = props;
   const cards = mapOrder(column.cards, column.cardOrder, "id");
-
-  const onCardDrop = (dropResult) => {
-    console.log(dropResult);
-  };
 
   return (
     <div className="columns">
@@ -30,7 +27,7 @@ function Column(props) {
           // onDropReady={(p) => console.log("Drop ready: ", p)}
           groupName="col"
           orientation="vertical"
-          onDrop={onCardDrop}
+          onDrop={(dropResult) => onCardDrop(column.id, dropResult)}
           getChildPayload={(index) => cards[index]}
           dragClass="card-ghost"
           dropClass="card-ghost-drop"
@@ -48,7 +45,12 @@ function Column(props) {
           ))}
         </Container>
       </div>
-      <footer>Add new card</footer>
+      <footer>
+        <div className="footer-action-handle">
+          <AddIcon className="mui-icon" />
+          Add new card
+        </div>
+      </footer>
     </div>
   );
 }
