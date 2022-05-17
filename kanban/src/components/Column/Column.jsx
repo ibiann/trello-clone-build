@@ -29,6 +29,7 @@ function Column(props) {
           // }}
           // onDropReady={(p) => console.log("Drop ready: ", p)}
           groupName="col"
+          orientation="vertical"
           onDrop={onCardDrop}
           getChildPayload={(index) => cards[index]}
           dragClass="card-ghost"

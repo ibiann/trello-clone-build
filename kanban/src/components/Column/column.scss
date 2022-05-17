@@ -1,16 +1,16 @@
 @import "../../settings";
 
+$column-height: calc(#{$board-content-height} - #{$gap * 2});
+
 .columns {
   flex: 0 0 auto;
   width: 300px;
-  height: cacl(100% - #{$gap});
-  &:not(:first-child) {
-    margin-left: $gap;
-  }
+  height: $column-height;
+  margin-top: $gap;
   margin-left: $gap;
   > * {
-    background-color: white;
-    color: black;
+    background-color: $color;
+    color: $word-color;
     padding: 0 8px;
   }
   header.column-drag-handle {
@@ -33,7 +33,7 @@
   .card-list {
     margin: 0;
     max-height: calc(
-      100% - #{$column-header-height} - #{$column-footer-height}
+      #{$column-height} - #{$column-header-height} - #{$column-footer-height}
     );
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -43,7 +43,7 @@
       width: 11px;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: darken($color: #000000, $amount: 15);
+      background-color: darken($color: $color-3, $amount: 15);
       border-right: $element-radius;
     }
     //card-dnd-styles

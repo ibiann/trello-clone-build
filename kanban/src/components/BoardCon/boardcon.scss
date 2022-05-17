@@ -1,9 +1,11 @@
 @import "../../settings";
 
 .app-column-board {
-  display: flex;
-  margin: 0 $gap $gap;
+  height: $board-content-height;
+  // display: flex;
+  // margin: 0 $gap $gap;
   overflow-x: auto;
+  overflow-y: hidden;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
@@ -17,8 +19,9 @@
 
   .not-found {
     padding: $gap;
-    color: red;
+    color: rgb(217, 30, 24);
   }
+
   //column dnd styles
   .column-drop-view {
     // background-color: rgba(150, 150, 200, 0.1);
