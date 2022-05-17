@@ -24,6 +24,7 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
     cursor: pointer;
   }
   footer {
+    display: flex;
     color: $add-icon-color;
     padding-left: $gap;
     height: $column-footer-height;
@@ -31,14 +32,12 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
     border-bottom-left-radius: $element-radius;
     border-bottom-right-radius: $element-radius;
     .footer-action-handle {
-      margin-left: $gap;
+      display: flex;
+      justify-content: space-between;
       cursor: pointer;
       &:hover {
         color: $word-color;
       }
-    }
-    span {
-      display: flex;
     }
   }
   .card-list {

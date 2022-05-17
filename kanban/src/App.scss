@@ -1,4 +1,5 @@
 @import "./settings";
+// @import "~bootstrap/scss/bootstrap";
 
 .body {
   margin: 0;
@@ -15,7 +16,33 @@
   background-color: #fff;
   background: url("https://picsum.photos/1920/1080") no-repeat center;
   .mui-icon {
-    font-size: 15px;
+    font-size: 16px;
     margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 10px;
+  }
+  .kanban-b4-container {
+    margin: 0 14px;
+    padding: 0;
+  }
+  textarea:focus,
+  textarea.form-control:focus,
+  input.form-control:focus,
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  [type="text"].form-control:focus,
+  [type="password"].form-control:focus,
+  [type="email"].form-control:focus,
+  [type="tel"].form-control:focus,
+  [contenteditable].form-control:focus {
+    box-shadow: none;
+    border: 1px solid $color-3;
+  }
+  .btn:focus,
+  .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
   }
 }

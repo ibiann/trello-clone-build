@@ -6,6 +6,10 @@
   // margin: 0 $gap $gap;
   overflow-x: auto;
   overflow-y: hidden;
+  &:after {
+    content: "";
+    flex: 0 0 $gap;
+  }
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
@@ -31,19 +35,42 @@
 
   .add-new-column {
     width: 250px;
-    height: 32px;
+    max-width: 250px;
     line-height: 32px;
-    padding: 4px 0 4px 15px;
+    padding: 2px 0 4px 16px;
     cursor: pointer;
     color: white;
-    margin-left: $gap;
     font-size: 15px;
-    background-color: hsla(0, 0%, 100%, 0.24);
+    background-color: hsla(0, 0%, 75%, 0.82);
     margin-top: $gap;
     margin-left: $gap;
     border-radius: $element-radius;
     &:hover {
-      background-color: hsla(0, 0%, 100%, 0.34)
+      background-color: hsla(0, 0%, 100%, 0.34);
+    }
+  }
+  .enter-new-column {
+    max-width: 250px;
+    background-color: $board-content-column-color;
+    line-height: 32px;
+    margin-top: $gap;
+    padding: 4px 10px;
+    margin-left: $gap;
+    border-radius: $element-radius;
+    input.input-box {
+      margin: 5px 0;
+    }
+    span.cancel-adding-new-column-icon {
+      padding-top: 10px;
+      padding-left: 10px;
+      cursor: pointer;
+      .mui-close-cancel {
+        font-size: 20px;
+        color: rgb(217, 30, 24);
+        &:hover {
+          color: darken($color: $color-4, $amount: 10);
+        }
+      }
     }
   }
 }
