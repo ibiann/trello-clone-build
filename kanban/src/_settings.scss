@@ -8,7 +8,9 @@ $navbar-element-height: 75%;
 $navbar-element-border-height: 5px;
 $navbar-element-border-radius: 5px;
 $column-header-height: 36px;
-$column-footer-height: 36px;
+$column-footer-height: 36px; //default
+$column-footer-height-fixed: 42px;
+$column-footer-line-height-fixed: 33px;
 $card-border-radius: 4px;
 $element-radius: 5px;
 
@@ -31,9 +33,10 @@ $app-navbar-board-bg-color: rgb(35, 37, 42);
 $items-elements-color: #ffff;
 $add-icon-color: rgb(151, 159, 174);
 $board-content-column-color: rgb(236, 240, 241);
+$menu-icon-color: rgb(107, 119, 140);
 
 $hover-bg-color: rgba(0, 0, 0, 0.24);
-$fade-text-color: #5e6c84;
+$fade-text-color: rgb(94, 108, 132);
 $word-color: rgb(36, 37, 42);
 
 //Frame
@@ -41,3 +44,4 @@ $screen-lg: 1261px;
 $screen-md: 992px;
 $screen-sm: 768px;
 $screen-iphone: 488px;
+

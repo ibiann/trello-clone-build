@@ -16,6 +16,7 @@
     "eslint": "^8.15.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "html-react-parser": "^1.4.12",
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
@@ -27,6 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "db": "json-server --watch ./src/db/db.json -p 3005",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

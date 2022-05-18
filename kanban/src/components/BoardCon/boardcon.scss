@@ -59,6 +59,9 @@
     border-radius: $element-radius;
     input.input-box {
       margin: 5px 0;
+      &:focus {
+        border-color: $fade-text-color;
+      }
     }
     span.cancel-adding-new-column-icon {
       padding-top: 10px;

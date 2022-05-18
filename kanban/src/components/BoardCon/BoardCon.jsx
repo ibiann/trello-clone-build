@@ -15,7 +15,7 @@ import { applyDrag } from "../../util/dragDrop";
 
 import { initialData } from "../../actions/initialData";
 import AddIcon from "@mui/icons-material/Add";
-import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
+import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -111,6 +111,16 @@ function BoardCon() {
     toggleOpenNewListForm("");
   };
 
+  const onUpdateList = (newUpdateColumn) => {
+    const columnIdUpdater = newUpdateColumn.id;
+
+    let newColumns = [...columns];
+    const columnIndexUpdater = newColumns.findIndex(
+      (i) => i.id === columnIdUpdater
+    ); //i = items
+    console.log(columnIndexUpdater);
+  };
+
   return (
     <div className="app-column-board">
       <Container
@@ -126,7 +136,11 @@ function BoardCon() {
       >
         {columns.map((column, index) => (
           <Draggable key={index}>
-            <Column column={column} onCardDrop={onCardDrop} />
+            <Column
+              column={column}
+              onCardDrop={onCardDrop}
+              onUpdateList={onUpdateList}
+            />
           </Draggable>
         ))}
       </Container>
@@ -158,7 +172,10 @@ function BoardCon() {
                 className="cancel-adding-new-column-icon"
                 onClick={toggleOpenNewListForm}
               >
-                <CancelPresentationIcon className="mui-close-cancel"/>
+                <CancelPresentationIcon
+                  size="lg"
+                  className="mui-close-cancel"
+                />
               </span>
             </Col>
           </Row>
