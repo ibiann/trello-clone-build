@@ -118,7 +118,19 @@ function BoardCon() {
     const columnIndexUpdater = newColumns.findIndex(
       (i) => i.id === columnIdUpdater
     ); //i = items
-    console.log(columnIndexUpdater);
+
+    if (newUpdateColumn._destroy) {
+      newColumns.splice(columnIndexUpdater, 1);
+    } else {
+      newColumns.splice(columnIndexUpdater, 1, newUpdateColumn);
+    }
+
+    let newBoard = { ...board };
+    newBoard.columnOrder = newColumns.map((c) => c.id);
+    newBoard.columns = newColumns;
+
+    setColumns(newColumns);
+    setBoard(newBoard);
   };
 
   return (
