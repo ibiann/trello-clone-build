@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Draggable } from "react-smooth-dnd";
 import {
   Container as BootstrapContainer,
@@ -9,27 +9,24 @@ import {
 } from "react-bootstrap";
 import { isEmpty } from "lodash";
 import "./boardcon.scss";
+import AddIcon from "@mui/icons-material/Add";
+import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
 
 import { initialData } from "../../actions/initialData";
-import AddIcon from "@mui/icons-material/Add";
-import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
   const [columns, setColumns] = useState([]);
   const [openNewListForm, setOpenNewListForm] = useState(false);
+  const toggleOpenNewListForm = () => setOpenNewListForm(!openNewListForm);
 
   const newListInputRef = useRef(null);
 
   const [newListTitle, setNewListTitle] = useState("");
-
-  const onNewListTitleChange = useCallback(
-    (e) => setNewListTitle(e.target.value),
-    []
-  );
+  const onNewListTitleChange = (e) => setNewListTitle(e.target.value);
 
   useEffect(() => {
     const boardDB = initialData.boards.find((board) => board.id === "board-1");
@@ -82,8 +79,6 @@ function BoardCon() {
     }
   };
 
-  const toggleOpenNewListForm = () => setOpenNewListForm(!openNewListForm);
-
   const addNewList = () => {
     if (!newListTitle) {
       newListInputRef.current.focus();
@@ -99,6 +94,7 @@ function BoardCon() {
       cardOrder: [],
       cards: [],
     };
+
     let newColumns = [...columns];
     newColumns.push(newColumnToAdd);
     let newBoard = { ...board };
@@ -184,10 +180,7 @@ function BoardCon() {
                 className="cancel-adding-new-column-icon"
                 onClick={toggleOpenNewListForm}
               >
-                <CancelPresentationIcon
-                  size="lg"
-                  className="mui-close-cancel"
-                />
+                <CancelPresentationIcon />
               </span>
             </Col>
           </Row>

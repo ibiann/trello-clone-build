@@ -116,5 +116,11 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
       // border: 1px #abc;
       margin: 5px;
     }
+    .add-new-card {
+      .add-new-card-text-box {
+        min-height: 54px;
+        max-height: 162px;
+      }
+    }
   }
 }
