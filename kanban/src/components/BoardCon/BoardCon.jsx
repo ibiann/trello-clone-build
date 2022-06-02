@@ -14,8 +14,7 @@ import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
-
-import { initialData } from "../../actions/initialData";
+import { fetchBoardDetails } from "../../actions/api";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -29,18 +28,22 @@ function BoardCon() {
   const onNewListTitleChange = (e) => setNewListTitle(e.target.value);
 
   useEffect(() => {
-    const boardDB = initialData.boards.find((board) => board.id === "board-1");
-    if (boardDB) {
-      setBoard(boardDB);
-
+    // const boardDB = initialData.boards.find((board) => board.id === "board-1");
+    const boardId = "62985e8badf471263ff7121f";
+    fetchBoardDetails(boardId).then((board) => {
+      console.log(board);
+      setBoard(board);
+      setColumns(mapOrder(board.columns, board.columnOrder, "_id"));
+    });
+    /* if (boardDB) {
       //sort columns
       boardDB.columns.sort((a, b) => {
         return (
           boardDB.columnOrder.indexOf(a.id) - boardDB.columnOrder.indexOf(b.id)
         );
       });
-      setColumns(mapOrder(boardDB.columns, boardDB.columnOrder, "id"));
-    }
+      
+    } */
   }, []);
 
   useEffect(() => {
@@ -60,7 +63,7 @@ function BoardCon() {
     newColumns = applyDrag(newColumns, dropResult);
 
     let newBoard = { ...board };
-    newBoard.columnOrder = newColumns.map((c) => c.id);
+    newBoard.columnOrder = newColumns.map((c) => c._id);
     newBoard.columns = newColumns;
 
     setColumns(newColumns);
@@ -71,9 +74,9 @@ function BoardCon() {
     if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
       let newColumns = [...columns];
 
-      let currentColumn = newColumns.find((c) => c.id === columnId);
+      let currentColumn = newColumns.find((c) => c._id === columnId);
       currentColumn.cards = applyDrag(currentColumn.cards, dropResult);
-      currentColumn.cardOrder = currentColumn.cards.map((i) => i.id);
+      currentColumn.cardOrder = currentColumn.cards.map((i) => i._id);
       // console.log(newColumns);
       setColumns(newColumns);
     }
@@ -89,7 +92,7 @@ function BoardCon() {
       id: Math.random().toString(36).substr(2, 5),
       name: board.name,
       background: [],
-      boardId: board.id,
+      boardId: board._id,
       title: newListTitle.trim(),
       cardOrder: [],
       cards: [],
@@ -98,7 +101,7 @@ function BoardCon() {
     let newColumns = [...columns];
     newColumns.push(newColumnToAdd);
     let newBoard = { ...board };
-    newBoard.columnOrder = newColumns.map((c) => c.id);
+    newBoard.columnOrder = newColumns.map((c) => c._id);
     newBoard.columns = newColumns;
 
     setColumns(newColumns);
@@ -108,11 +111,11 @@ function BoardCon() {
   };
 
   const onUpdateList = (newUpdateColumn) => {
-    const columnIdUpdater = newUpdateColumn.id;
+    const columnIdUpdater = newUpdateColumn._id;
 
     let newColumns = [...columns];
     const columnIndexUpdater = newColumns.findIndex(
-      (i) => i.id === columnIdUpdater
+      (i) => i._id === columnIdUpdater
     ); //i = items
 
     if (newUpdateColumn._destroy) {
@@ -122,7 +125,7 @@ function BoardCon() {
     }
 
     let newBoard = { ...board };
-    newBoard.columnOrder = newColumns.map((c) => c.id);
+    newBoard.columnOrder = newColumns.map((c) => c._id);
     newBoard.columns = newColumns;
 
     setColumns(newColumns);
