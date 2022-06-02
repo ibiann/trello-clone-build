@@ -38,7 +38,7 @@
   [type="tel"].form-control:focus,
   [contenteditable].form-control:focus {
     box-shadow: none;
-    // border: 1px solid $color-3;
+    border: 1px solid $fade-text-color;
   }
   .btn:focus,
   .btn:active {
@@ -53,7 +53,16 @@
     cursor: pointer;
     &:focus {
       background-color: $items-elements-color;
-      border: 1px solid $fade-text-color;
+    }
+  }
+  span.cancel-adding-new-column-icon {
+    margin-left: $gap;
+    font-size: 20px;
+    color: rgb(217, 30, 24);
+    cursor: pointer;
+
+    &:hover {
+      color: darken($color: $color-4, $amount: 15);
     }
   }
 }
