@@ -18,7 +18,7 @@ import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 
 function Column(props) {
   const { column, onCardDrop, onUpdateList } = props;
-  const cards = mapOrder(column.cards, column.cardOrder, "id");
+  const cards = mapOrder(column.cards, column.cardOrder, "_id");
 
   const [showConfirmRemove, setShowConfirmRemove] = useState(false);
   const toggleShowConfirmRemove = () =>
@@ -74,7 +74,7 @@ function Column(props) {
     //copy same path from content of adding new card
     const newCardToAdd = {
       id: Math.random().toString(36).substr(2, 5),
-      colimnId: column.id,
+      colimnId: column._id,
       boardId: column.boardId,
       title: newCardTitle.trim(),
       cover: null,
@@ -82,7 +82,7 @@ function Column(props) {
 
     let newColumn = cloneDeep(column);
     newColumn.cards.push(newCardToAdd);
-    newColumn.cardOrder.push(newCardToAdd.id);
+    newColumn.cardOrder.push(newCardToAdd._id);
 
     console.log(newColumn);
     onUpdateList(newColumn);
@@ -133,7 +133,7 @@ function Column(props) {
           //react-dnd
           groupName="col"
           orientation="vertical"
-          onDrop={(dropResult) => onCardDrop(column.id, dropResult)}
+          onDrop={(dropResult) => onCardDrop(column._id, dropResult)}
           getChildPayload={(index) => cards[index]}
           dragClass="card-ghost"
           dropClass="card-ghost-drop"
