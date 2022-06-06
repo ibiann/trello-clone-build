@@ -11,6 +11,7 @@ import {
   selectAllTextField,
   useKeyBoardToSaveTitle,
 } from "../../util/contentEditable";
+import { createCard, updateColumn } from "../../actions/Api";
 
 import AddIcon from "@mui/icons-material/Add";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -46,6 +47,7 @@ function Column(props) {
     }
   }, [openNewCardForm]);
 
+  // Remove Column
   const onRemoveAction = (type) => {
     if (type === MODAL_CONFIRM) {
       const newColumn = {
@@ -57,13 +59,19 @@ function Column(props) {
     toggleShowConfirmRemove();
   };
 
+  // Update Column Title
   const handleTitleBlur = () => {
-    console.log(listTitle);
-    const newColumn = {
-      ...column,
-      title: listTitle,
-    };
-    onUpdateList(newColumn);
+    if (listTitle !== column.title) {
+      const newColumn = {
+        ...column,
+        title: listTitle,
+      }
+      // Call Api update column
+      updateColumn(newColumn._id, newColumn).then((updatedColumn) => {
+        updatedColumn.cards = newColumn.cards;
+        onUpdateList(updatedColumn);
+      })
+    }
   };
 
   const addNewCard = () => {
@@ -73,21 +81,20 @@ function Column(props) {
     }
     //copy same path from content of adding new card
     const newCardToAdd = {
-      id: Math.random().toString(36).substr(2, 5),
-      colimnId: column._id,
+      columnId: column._id,
       boardId: column.boardId,
       title: newCardTitle.trim(),
-      cover: null,
     };
+    // Call Api cards
+    createCard(newCardToAdd).then((card) => {
+      let newColumn = cloneDeep(column);
+      newColumn.cards.push(card);
+      newColumn.cardOrder.push(newCardToAdd._id);
 
-    let newColumn = cloneDeep(column);
-    newColumn.cards.push(newCardToAdd);
-    newColumn.cardOrder.push(newCardToAdd._id);
-
-    console.log(newColumn);
-    onUpdateList(newColumn);
-    setNewCardTitle("");
-    toggleOpenNewCardForm();
+      onUpdateList(newColumn);
+      setNewCardTitle("");
+      toggleOpenNewCardForm();
+    });
   };
 
   return (

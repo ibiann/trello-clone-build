@@ -15,8 +15,7 @@ import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
 // import { initialData } from "../../actions/initialData";
-import { fetchBoard } from "../../actions/Api"
-
+import { fetchBoard, createColumn } from "../../actions/Api";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -31,12 +30,12 @@ function BoardCon() {
 
   useEffect(() => {
     // const boardDB = initialData.boards.find((board) => board._id === "board-1");
-    const boardId = '629da33fd368f5d52d1f6775'
-    fetchBoard(boardId).then(board => {
-      console.log(board)
+    const boardId = "629da33fd368f5d52d1f6775";
+    fetchBoard(boardId).then((board) => {
+      console.log(board);
       setBoard(board);
       setColumns(mapOrder(board.columns, board.columnOrder, "_id"));
-    })
+    });
     // if (boardDB) {
     //   setBoard(boardDB);
     //   //sort columns
@@ -92,25 +91,23 @@ function BoardCon() {
     }
 
     const newColumnToAdd = {
-      id: Math.random().toString(36).substr(2, 5),
-      name: board.name,
-      background: [],
       boardId: board._id,
       title: newListTitle.trim(),
-      cardOrder: [],
-      cards: [],
     };
+    // Call Api columns
+    createColumn(newColumnToAdd).then((column) => {
+      let newColumns = [...columns];
+      newColumns.push(column);
 
-    let newColumns = [...columns];
-    newColumns.push(newColumnToAdd);
-    let newBoard = { ...board };
-    newBoard.columnOrder = newColumns.map((c) => c._id);
-    newBoard.columns = newColumns;
+      let newBoard = { ...board };
+      newBoard.columnOrder = newColumns.map((c) => c._id);
+      newBoard.columns = newColumns;
 
-    setColumns(newColumns);
-    setBoard(newBoard);
-    setNewListTitle("");
-    toggleOpenNewListForm("");
+      setColumns(newColumns);
+      setBoard(newBoard);
+      setNewListTitle("");
+      toggleOpenNewListForm("");
+    })
   };
 
   const onUpdateList = (newUpdateColumn) => {
