@@ -1,16 +1,54 @@
 @import "../../settings";
 
 .app-navbar-top {
-  // background-color: rgb(0, 0, 0);
-  // background-color: rgba(0, 0, 0, 0.4);
-  // color: white;
-  // font-weight: bold;
   height: $app-navbar-height;
-  padding-left: $gap;
   display: flex;
+  overflow: hidden;
   align-items: center;
+  justify-content: space-between;
   background-color: transparent;
   backdrop-filter: blur(20px);
   color: rgb(8, 14, 44);
-  font-size: 1.5rem;
+  .appbar-container {
+    max-width: 100%;
+    height: 100%;
+    .action-apps {
+      display: inline-flex;
+      height: 100%;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      div.items {
+        padding: 6px 10px;
+        border-radius: 3px;
+        &:not(:first-child) {
+          margin-left: 4px;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: white;
+        }
+        &.home {
+            font-size: 15px;
+        }
+        &.search {
+          padding: 6px 0;
+          .group-searching {
+            height: 19px;
+            .input-search {
+              max-height: 100%;
+              background-color: inherit;
+              color: inherit;
+              border: none;
+              font-size: 14px;
+              &::placeholder {
+                color: gray;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
