@@ -13,6 +13,7 @@ export const createColumn = async (data) => {
     // tra ve tao column neu co
 }
 
+// update or remove column
 export const updateColumn = async (id, data) => {
     const request = await axios.put(`${API_ROOT}/v1/columns/${id}`, data) // data request body ben server se nhan ve
     return request.data

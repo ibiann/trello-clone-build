@@ -30,7 +30,7 @@ function BoardCon() {
 
   useEffect(() => {
     // const boardDB = initialData.boards.find((board) => board._id === "board-1");
-    const boardId = "629da33fd368f5d52d1f6775";
+    const boardId = "629ec0b36208d6b780e960dc";
     fetchBoard(boardId).then((board) => {
       console.log(board);
       setBoard(board);
