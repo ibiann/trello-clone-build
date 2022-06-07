@@ -14,7 +14,12 @@ import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
+<<<<<<< HEAD
 import { fetchBoardDetails } from "../../actions/api";
+=======
+// import { initialData } from "../../actions/initialData";
+import { fetchBoard, createColumn } from "../../actions/Api";
+>>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -28,13 +33,20 @@ function BoardCon() {
   const onNewListTitleChange = (e) => setNewListTitle(e.target.value);
 
   useEffect(() => {
+<<<<<<< HEAD
     // const boardDB = initialData.boards.find((board) => board.id === "board-1");
     const boardId = "62985e8badf471263ff7121f";
     fetchBoardDetails(boardId).then((board) => {
+=======
+    // const boardDB = initialData.boards.find((board) => board._id === "board-1");
+    const boardId = "629da33fd368f5d52d1f6775";
+    fetchBoard(boardId).then((board) => {
+>>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
       console.log(board);
       setBoard(board);
       setColumns(mapOrder(board.columns, board.columnOrder, "_id"));
     });
+<<<<<<< HEAD
     /* if (boardDB) {
       //sort columns
       boardDB.columns.sort((a, b) => {
@@ -44,6 +56,18 @@ function BoardCon() {
       });
       
     } */
+=======
+    // if (boardDB) {
+    //   setBoard(boardDB);
+    //   //sort columns
+    //   boardDB.columns.sort((a, b) => {
+    //     return (
+    //       boardDB.columnOrder.indexOf(a._id) - boardDB.columnOrder.indexOf(b)
+    //     );
+    //   });
+    //   setColumns(mapOrder(boardDB.columns, boardDB.columnOrder, "_id"));
+    // }
+>>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
   }, []);
 
   useEffect(() => {
@@ -89,25 +113,37 @@ function BoardCon() {
     }
 
     const newColumnToAdd = {
+<<<<<<< HEAD
       id: Math.random().toString(36).substr(2, 5),
       name: board.name,
       background: [],
+=======
+>>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
       boardId: board._id,
       title: newListTitle.trim(),
-      cardOrder: [],
-      cards: [],
     };
+    // Call Api columns
+    createColumn(newColumnToAdd).then((column) => {
+      let newColumns = [...columns];
+      newColumns.push(column);
 
+<<<<<<< HEAD
     let newColumns = [...columns];
     newColumns.push(newColumnToAdd);
     let newBoard = { ...board };
     newBoard.columnOrder = newColumns.map((c) => c._id);
     newBoard.columns = newColumns;
+=======
+      let newBoard = { ...board };
+      newBoard.columnOrder = newColumns.map((c) => c._id);
+      newBoard.columns = newColumns;
+>>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
 
-    setColumns(newColumns);
-    setBoard(newBoard);
-    setNewListTitle("");
-    toggleOpenNewListForm("");
+      setColumns(newColumns);
+      setBoard(newBoard);
+      setNewListTitle("");
+      toggleOpenNewListForm("");
+    })
   };
 
   const onUpdateList = (newUpdateColumn) => {
