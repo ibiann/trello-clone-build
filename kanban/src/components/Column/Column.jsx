@@ -81,12 +81,7 @@ function Column(props) {
     }
     //copy same path from content of adding new card
     const newCardToAdd = {
-<<<<<<< HEAD
-      id: Math.random().toString(36).substr(2, 5),
-      colimnId: column._id,
-=======
       columnId: column._id,
->>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
       boardId: column.boardId,
       title: newCardTitle.trim(),
     };
@@ -96,21 +91,10 @@ function Column(props) {
       newColumn.cards.push(card);
       newColumn.cardOrder.push(newCardToAdd._id);
 
-<<<<<<< HEAD
-    let newColumn = cloneDeep(column);
-    newColumn.cards.push(newCardToAdd);
-    newColumn.cardOrder.push(newCardToAdd._id);
-
-    console.log(newColumn);
-    onUpdateList(newColumn);
-    setNewCardTitle("");
-    toggleOpenNewCardForm();
-=======
       onUpdateList(newColumn);
       setNewCardTitle("");
       toggleOpenNewCardForm();
     });
->>>>>>> c60901910162d9149ca4383797481b5458dcf7cf
   };
 
   return (
