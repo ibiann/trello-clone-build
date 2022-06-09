@@ -4,7 +4,7 @@ import { Dropdown, Form, Button } from "react-bootstrap";
 import { cloneDeep } from "lodash";
 import "./column.scss";
 import Card from "../Card/Card";
-import Remove from "../Dialogue/Remove";
+import Remove from "../Dialogue/Remove.jsx";
 import { mapOrder } from "../../util/sort";
 import { MODAL_CONFIRM } from "../../util/const";
 import {
@@ -92,7 +92,7 @@ function Column(props) {
     createCard(newCardToAdd).then((card) => {
       let newColumn = cloneDeep(column);
       newColumn.cards.push(card);
-      newColumn.cardOrder.push(newCardToAdd._id);
+      newColumn.cardOrder.push(card._id);
 
       onUpdateList(newColumn);
       setNewCardTitle("");

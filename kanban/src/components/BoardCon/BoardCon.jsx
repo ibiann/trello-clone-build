@@ -21,7 +21,7 @@ import {
   updateBoard,
   updateColumn,
   updateCard
-} from "../../actions/Api";
+} from "../../actions/api";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -42,6 +42,7 @@ function BoardCon() {
       setBoard(board);
       setColumns(mapOrder(board.columns, board.columnOrder, "_id"));
     });
+  }, []);
     // if (boardDB) {
     //   setBoard(boardDB);
     //   //sort columns
@@ -52,7 +53,7 @@ function BoardCon() {
     //   });
     //   setColumns(mapOrder(boardDB.columns, boardDB.columnOrder, "_id"));
     // }
-  }, []);
+  // 
 
   useEffect(() => {
     if (newListInputRef && newListInputRef.current) {
