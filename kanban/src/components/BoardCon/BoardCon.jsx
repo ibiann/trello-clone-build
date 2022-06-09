@@ -15,7 +15,7 @@ import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
 // import { initialData } from "../../actions/initialData";
-import { fetchBoard, createColumn } from "../../actions/Api";
+import { fetchBoard, createColumn } from "../../actions/api";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -30,7 +30,7 @@ function BoardCon() {
 
   useEffect(() => {
     // const boardDB = initialData.boards.find((board) => board._id === "board-1");
-    const boardId = "629da33fd368f5d52d1f6775";
+    const boardId = "62a1c76fbf5e596c06c2b400";
     fetchBoard(boardId).then((board) => {
       console.log(board);
       setBoard(board);

@@ -11,7 +11,7 @@ import {
   selectAllTextField,
   useKeyBoardToSaveTitle,
 } from "../../util/contentEditable";
-import { createCard, updateColumn } from "../../actions/Api";
+import { createCard, updateColumn } from "../../actions/api";
 
 import AddIcon from "@mui/icons-material/Add";
 import MenuIcon from "@mui/icons-material/Menu";
