@@ -7,7 +7,7 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
-import { isEmpty } from "lodash";
+import { isEmpty, cloneDeep } from "lodash";
 import "./boardcon.scss";
 import AddIcon from "@mui/icons-material/Add";
 import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
@@ -15,7 +15,13 @@ import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
 // import { initialData } from "../../actions/initialData";
-import { fetchBoard, createColumn } from "../../actions/api";
+import {
+  fetchBoard,
+  createColumn,
+  updateBoard,
+  updateColumn,
+  updateCard
+} from "../../actions/Api";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -30,7 +36,7 @@ function BoardCon() {
 
   useEffect(() => {
     // const boardDB = initialData.boards.find((board) => board._id === "board-1");
-    const boardId = "62a1c76fbf5e596c06c2b400";
+    const boardId = "62a1c23ef1d619c0bbf857ea";
     fetchBoard(boardId).then((board) => {
       console.log(board);
       setBoard(board);
@@ -60,27 +66,57 @@ function BoardCon() {
   }
 
   const onColumnDrop = (dropResult) => {
-    console.log(dropResult);
-    let newColumns = [...columns];
+    let newColumns = cloneDeep(columns);
     newColumns = applyDrag(newColumns, dropResult);
 
-    let newBoard = { ...board };
+    let newBoard = cloneDeep(board);
     newBoard.columnOrder = newColumns.map((c) => c._id);
     newBoard.columns = newColumns;
 
     setColumns(newColumns);
     setBoard(newBoard);
+    /* Call APi update column order for board */
+    // thay 1 truong cu the
+    updateBoard(newBoard._id, newBoard).catch(() => {
+      setColumns(newColumns);
+      setBoard(board);
+    });
   };
 
   const onCardDrop = (columnId, dropResult) => {
     if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-      let newColumns = [...columns];
+      let newColumns = cloneDeep(columns);
 
       let currentColumn = newColumns.find((c) => c._id === columnId);
       currentColumn.cards = applyDrag(currentColumn.cards, dropResult);
       currentColumn.cardOrder = currentColumn.cards.map((i) => i._id);
       // console.log(newColumns);
-      setColumns(newColumns);
+
+      setColumns(newColumns); //update
+      if (dropResult.removedIndex !== null && dropResult.addedIndex !== null) {
+        /**
+         * Moving cards inside columns
+         * Calling api update the cardOrder in column
+         */
+        updateColumn(currentColumn._id, currentColumn).catch(() => {
+          setColumns(columns);
+        });
+      } else {
+        /**
+         * Moving cards between columns
+         */
+        // Calling api update the cardOrder in column
+         updateColumn(currentColumn._id, currentColumn).catch(() => {
+            setColumns(columns)
+        });
+
+        if (dropResult.addedIndex !== null) {
+          let currentCard = cloneDeep(dropResult.payload)
+          currentCard.columnId = currentColumn._id
+          // Calling api update column in current cards
+          updateCard(currentCard._id, currentCard)
+        }
+      }
     }
   };
 
@@ -107,7 +143,7 @@ function BoardCon() {
       setBoard(newBoard);
       setNewListTitle("");
       toggleOpenNewListForm("");
-    })
+    });
   };
 
   const onUpdateList = (newUpdateColumn) => {

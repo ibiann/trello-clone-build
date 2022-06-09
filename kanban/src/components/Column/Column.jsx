@@ -54,7 +54,10 @@ function Column(props) {
         ...column,
         _destroy: true,
       };
-      onUpdateList(newColumn);
+      // Call Api update column
+      updateColumn(newColumn._id, newColumn).then((updatedColumn) => {
+        onUpdateList(updatedColumn);
+      })
     }
     toggleShowConfirmRemove();
   };
