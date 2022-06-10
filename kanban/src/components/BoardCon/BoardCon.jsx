@@ -9,8 +9,6 @@ import {
 } from "react-bootstrap";
 import { isEmpty, cloneDeep } from "lodash";
 import "./boardcon.scss";
-import AddIcon from "@mui/icons-material/Add";
-import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
@@ -22,6 +20,7 @@ import {
   updateColumn,
   updateCard
 } from "../../actions/api";
+import { CloseCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 function BoardCon() {
   const [board, setBoard] = useState({});
@@ -147,7 +146,7 @@ function BoardCon() {
     });
   };
 
-  const onUpdateList = (newUpdateColumn) => {
+  const onUpdateListColumn = (newUpdateColumn) => {
     const columnIdUpdater = newUpdateColumn._id;
 
     let newColumns = [...columns];
@@ -187,7 +186,7 @@ function BoardCon() {
             <Column
               column={column}
               onCardDrop={onCardDrop}
-              onUpdateList={onUpdateList}
+              onUpdateListColumn={onUpdateListColumn}
             />
           </Draggable>
         ))}
@@ -196,7 +195,7 @@ function BoardCon() {
         {!openNewListForm && (
           <Row>
             <Col className="add-new-column" onClick={toggleOpenNewListForm}>
-              <AddIcon className="mui-icon" /> Add another list
+              <PlusOutlined className="mui-icon" /> Add another list
             </Col>
           </Row>
         )}
@@ -220,7 +219,7 @@ function BoardCon() {
                 className="cancel-adding-new-column-icon"
                 onClick={toggleOpenNewListForm}
               >
-                <CancelPresentationIcon />
+                <CloseCircleOutlined />
               </span>
             </Col>
           </Row>
