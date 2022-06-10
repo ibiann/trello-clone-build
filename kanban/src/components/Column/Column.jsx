@@ -4,7 +4,7 @@ import { Dropdown, Form, Button } from "react-bootstrap";
 import { cloneDeep } from "lodash";
 import "./column.scss";
 import Card from "../Card/Card";
-import Remove from "../Dialogue/Remove.jsx";
+import Remove from "../Dialogue/Remove";
 import { mapOrder } from "../../util/sort";
 import { MODAL_CONFIRM } from "../../util/const";
 import {
@@ -13,12 +13,10 @@ import {
 } from "../../util/contentEditable";
 import { createCard, updateColumn } from "../../actions/api";
 
-import AddIcon from "@mui/icons-material/Add";
-import MenuIcon from "@mui/icons-material/Menu";
-import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
+import { CloseCircleOutlined, MenuOutlined, PlusCircleOutlined } from "@ant-design/icons";
 
 function Column(props) {
-  const { column, onCardDrop, onUpdateList } = props;
+  const { column, onCardDrop, onUpdateListColumn } = props;
   const cards = mapOrder(column.cards, column.cardOrder, "_id");
 
   const [showConfirmRemove, setShowConfirmRemove] = useState(false);
@@ -56,7 +54,7 @@ function Column(props) {
       };
       // Call Api update column
       updateColumn(newColumn._id, newColumn).then((updatedColumn) => {
-        onUpdateList(updatedColumn);
+        onUpdateListColumn(updatedColumn);
       })
     }
     toggleShowConfirmRemove();
@@ -72,7 +70,7 @@ function Column(props) {
       // Call Api update column
       updateColumn(newColumn._id, newColumn).then((updatedColumn) => {
         updatedColumn.cards = newColumn.cards;
-        onUpdateList(updatedColumn);
+        onUpdateListColumn(updatedColumn);
       })
     }
   };
@@ -94,7 +92,7 @@ function Column(props) {
       newColumn.cards.push(card);
       newColumn.cardOrder.push(card._id);
 
-      onUpdateList(newColumn);
+      onUpdateListColumn(newColumn);
       setNewCardTitle("");
       toggleOpenNewCardForm();
     });
@@ -124,7 +122,7 @@ function Column(props) {
               size="sm"
               className="dropdown-btn"
             >
-              <MenuIcon className="dropwdown-menu-icon" />
+              <MenuOutlined className="dropwdown-menu-icon" />
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={toggleOpenNewCardForm}>
@@ -187,13 +185,13 @@ function Column(props) {
               className="cancel-adding-new-column-icon"
               onClick={toggleOpenNewCardForm}
             >
-              <DeleteSweepIcon />
+              <CloseCircleOutlined />
             </span>
           </div>
         )}
         {!openNewCardForm && (
           <div className="footer-action-handle" onClick={toggleOpenNewCardForm}>
-            <AddIcon className="mui-icon" />
+            <PlusCircleOutlined className="mui-icon" />
             Add new card
           </div>
         )}
