@@ -35,7 +35,7 @@ function BoardCon() {
 
   useEffect(() => {
     // const boardDB = initialData.boards.find((board) => board._id === "board-1");
-    const boardId = "62a1c23ef1d619c0bbf857ea";
+    const boardId = "62a228910422ccc16a5579c9";
     fetchBoard(boardId).then((board) => {
       console.log(board);
       setBoard(board);
@@ -78,7 +78,7 @@ function BoardCon() {
     /* Call APi update column order for board */
     // thay 1 truong cu the
     updateBoard(newBoard._id, newBoard).catch(() => {
-      setColumns(newColumns);
+      setColumns(columns);
       setBoard(board);
     });
   };
@@ -90,9 +90,8 @@ function BoardCon() {
       let currentColumn = newColumns.find((c) => c._id === columnId);
       currentColumn.cards = applyDrag(currentColumn.cards, dropResult);
       currentColumn.cardOrder = currentColumn.cards.map((i) => i._id);
-      // console.log(newColumns);
-
-      setColumns(newColumns); //update
+      
+      setColumns(newColumns); //update column
       if (dropResult.removedIndex !== null && dropResult.addedIndex !== null) {
         /**
          * Moving cards inside columns
@@ -113,7 +112,7 @@ function BoardCon() {
         if (dropResult.addedIndex !== null) {
           let currentCard = cloneDeep(dropResult.payload)
           currentCard.columnId = currentColumn._id
-          // Calling api update column in current cards
+          // Calling api update column in current cards, khi addedIndex khac null
           updateCard(currentCard._id, currentCard)
         }
       }
