@@ -200,7 +200,7 @@ function Column(props) {
         show={showConfirmRemove}
         onAction={onRemoveAction}
         title="Remove Column"
-        content={`bruh ${column.title} bruh`}
+        content={`Removing ${column.title} ???`}
       />
     </div>
   );
