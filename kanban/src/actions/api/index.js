@@ -13,11 +13,6 @@ export const updateBoard = async (id, data) => {
 }
 // tra ve update board neu co
 
-export const updateBoard = async (id, data) => {
-    const request = await axios.get(`${API_ROOT}/v1/boards/${id}`, data)
-    return request.data
-}
-
 export const createColumn = async (data) => {
     const request = await axios.post(`${API_ROOT}/v1/columns`, data) // data request body ben server se nhan ve
     return request.data
@@ -42,10 +37,3 @@ export const updateCard = async (id, data) => {
     return request.data
 }
 // tra ve update card neu co
-}
-
-export const updateCard = async (id, data) => {
-    const request = await axios.get(`${API_ROOT}/v1/cards/${id}`, data)
-    return request.data
-}
-
