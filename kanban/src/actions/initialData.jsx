@@ -1,5 +1,5 @@
 export const initialData = {
-  currentBoard: 0,
+  currentBoard: 1,
   boards: [
     {
       id: "board-1",

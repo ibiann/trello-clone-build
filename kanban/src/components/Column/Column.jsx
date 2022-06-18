@@ -13,11 +13,7 @@ import {
 } from "../../util/contentEditable";
 import { createCard, updateColumn } from "../../actions/api";
 
-import {
-  CloseOutlined,
-  MenuOutlined,
-  PlusCircleOutlined,
-} from "@ant-design/icons";
+import { CloseCircleOutlined, MenuOutlined, PlusCircleOutlined } from "@ant-design/icons";
 
 function Column(props) {
   const { column, onCardDrop, onUpdateListColumn } = props;
@@ -59,7 +55,7 @@ function Column(props) {
       // Call Api update column
       updateColumn(newColumn._id, newColumn).then((updatedColumn) => {
         onUpdateListColumn(updatedColumn);
-      });
+      })
     }
     toggleShowConfirmRemove();
   };
@@ -70,12 +66,12 @@ function Column(props) {
       const newColumn = {
         ...column,
         title: listTitle,
-      };
+      }
       // Call Api update column
       updateColumn(newColumn._id, newColumn).then((updatedColumn) => {
         updatedColumn.cards = newColumn.cards;
         onUpdateListColumn(updatedColumn);
-      });
+      })
     }
   };
 
@@ -126,16 +122,16 @@ function Column(props) {
               size="sm"
               className="dropdown-btn"
             >
-              <MenuOutlined className="dropdown-menu-icon" />
+              <MenuOutlined className="dropwdown-menu-icon" />
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={toggleOpenNewCardForm}>
                 Add Card
               </Dropdown.Item>
               <Dropdown.Item onClick={toggleShowConfirmRemove}>
-                Remove Column
+                Remove
               </Dropdown.Item>
-              {/* <Dropdown.Item href="#/action-3">Move Cards</Dropdown.Item> */}
+              <Dropdown.Item href="#/action-3">Move Cards</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
@@ -182,26 +178,21 @@ function Column(props) {
       <footer>
         {openNewCardForm && (
           <div className="add-new-card-handle">
-            <Button
-              className="button"
-              variant="outline-success"
-              size="sm"
-              onClick={addNewCard}
-            >
+            <Button variant="outline-success" size="sm" onClick={addNewCard}>
               Add card
             </Button>
             <span
               className="cancel-adding-new-column-icon"
               onClick={toggleOpenNewCardForm}
             >
-              <CloseOutlined />
+              <CloseCircleOutlined />
             </span>
           </div>
         )}
         {!openNewCardForm && (
           <div className="footer-action-handle" onClick={toggleOpenNewCardForm}>
-            <PlusCircleOutlined className="add-icon" />
-            <span>Add new card</span>
+            <PlusCircleOutlined className="mui-icon" />
+            Add new card
           </div>
         )}
       </footer>
@@ -209,7 +200,7 @@ function Column(props) {
         show={showConfirmRemove}
         onAction={onRemoveAction}
         title="Remove Column"
-        content={`Removing ${column.title} ???`}
+        content={`bruh ${column.title} bruh`}
       />
     </div>
   );

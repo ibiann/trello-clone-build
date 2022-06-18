@@ -42,17 +42,18 @@ function BoardCon() {
       setColumns(mapOrder(board.columns, board.columnOrder, "_id"));
     });
   }, []);
-    // if (boardDB) {
-    //   setBoard(boardDB);
-    //   //sort columns
-    //   boardDB.columns.sort((a, b) => {
-    //     return (
-    //       boardDB.columnOrder.indexOf(a._id) - boardDB.columnOrder.indexOf(b)
-    //     );
-    //   });
-    //   setColumns(mapOrder(boardDB.columns, boardDB.columnOrder, "_id"));
-    // }
-  // 
+
+    /* if (boardDB) {
+      setBoard(boardDB);
+      //sort columns
+      boardDB.columns.sort((a, b) => {
+        return (
+          boardDB.columnOrder.indexOf(a._id) - boardDB.columnOrder.indexOf(b)
+        );
+      });
+      setColumns(mapOrder(boardDB.columns, boardDB.columnOrder, "_id"));
+    }
+  }, []); */
 
   useEffect(() => {
     if (newListInputRef && newListInputRef.current) {
@@ -190,7 +191,7 @@ function BoardCon() {
           </Draggable>
         ))}
       </Container>
-      <BootstrapContainer className="kanban-b4-container">
+      <BootstrapContainer className="merres-b4-container">
         {!openNewListForm && (
           <Row>
             <Col className="add-new-column" onClick={toggleOpenNewListForm}>
