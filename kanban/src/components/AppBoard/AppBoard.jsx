@@ -18,11 +18,11 @@ function AppBoard() {
             <div className="items board-type">Workspace</div>
             <div className="divider"></div>
             <div className="items members-avatar">
-              <img src="https://picsum.photos/200/200" alt="ava-user" />
-              <img src="https://picsum.photos/200/200" alt="ava-user2" />
-              <img src="https://picsum.photos/200/200" alt="ava-user3" />
-              <img src="https://picsum.photos/200/200" alt="ava-user4" />
-              <img src="https://picsum.photos/200/200" alt="ava-user5" />
+              <img src="https://picsum.photos/200/200" alt="" />
+              <img src="https://picsum.photos/200/200" alt="" />
+              <img src="https://picsum.photos/200/200" alt="" />
+              <img src="https://picsum.photos/200/200" alt="" />
+              <img src="https://picsum.photos/200/200" alt="" />
               <span className="members-plus"><PlusCircleOutlined /></span>
               <span className="inviting"><ContactsOutlined /><strong>Invite</strong></span>
             </div>
