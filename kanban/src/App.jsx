@@ -7,7 +7,7 @@ import BoardCon from "./components/BoardCon/BoardCon";
 
 function App() {
   return (
-    <div className="kanban-clone">
+    <div className="merres">
       <AppBar />
       <AppBoard />
       <BoardCon />
