@@ -1,5 +1,11 @@
 @import "../../settings";
 
+$app-bar-text-color: rgb(34, 47, 62);
+$app-bar-left-text-color-hover: rgba(247, 241, 227,1.0);
+$app-bar-right-text-color-hover: rgba(247, 241, 227,1.0);
+$searching-input-bar: rgb(245, 246, 250);
+$searching-input-bar-icon: rgb(220, 221, 225);
+
 .app-navbar-top {
   height: $app-navbar-height;
   display: flex;
@@ -8,7 +14,7 @@
   justify-content: space-between;
   background-color: transparent;
   backdrop-filter: blur(20px);
-  color: rgb(8, 14, 44);
+  color: $app-bar-text-color;
   .appbar-container {
     max-width: 100%;
     .action-apps {
@@ -18,47 +24,45 @@
       flex-direction: row;
       align-items: center;
       .items-left {
-        padding: 6px 10px;
+        padding: 0px 7px;
         border-radius: 3px;
         &:not(:first-child) {
           margin-left: 4px;
         }
         &:hover {
-          cursor: pointer;
-          background-color: white;
+          background-color: $app-bar-left-text-color-hover;
         }
         &.home {
             font-size: 15px;
         }
         &.searching-bar {
-          padding: 6px 0;
+          padding: 6px 18px;
           .group-searching {
             height: 19px;
             .input-search {
               max-height: 100%;
-              background-color: white;
+              background-color: $searching-input-bar;
               color: inherit;
               border: none;
               font-size: 14px;
               &::placeholder {
-                color: gray;
+                color: $app-bar-text-color;
                 opacity: 1;
               }
             }
             .input-icon-searching-bar {
-              padding: 0 8px 0 0;
-              background-color: transparent;
-              border: none;
-              color: inherit;
+              padding: 2px 5px 3px 5px;
+              background-color: $searching-input-bar-icon;   
+              border-radius: 3px;           
+              cursor: pointer;
             }
           }
         }
       }
     }
     .app-branding {
-      cursor: pointer;
       &:hover {
-        background-color: gray;
+        background-color: transparent;
       }
       a {
         color: inherit;
@@ -72,7 +76,7 @@
         span.logo-app-name {
           font-size: 12px;
           text-transform: uppercase;
-          margin-left: 4px;
+          margin-left: $gap;
           font-weight: bold;
         }
       }
@@ -85,15 +89,15 @@
       align-items: center;
       justify-content: flex-end;
       div.items-right  {
-        padding: 6px 10px;
-        background-color: gray;
+        padding: 2px 11px;
+        background-color: transparent;
         border-radius: 3px;
         &:not(:first-child) {
           margin-left: 4px;
         }
         &:hover {
           cursor: pointer;
-          background-color: gray;
+          background-color: $app-bar-right-text-color-hover;
         }
         &.user-avatar {
           padding: 0;

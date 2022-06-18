@@ -8,7 +8,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { isEmpty, cloneDeep } from "lodash";
-import "./boardcon.scss";
+import './boardcon.scss'
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
