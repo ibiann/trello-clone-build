@@ -29,45 +29,46 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
     }
     .dropdown-actions-list {
       flex: 10%;
-      button.dropdown-btn {
-        align-items: center;
-        padding: 0px 6px;
-        font-size: 4px;
-        width: 38px;
-        height: 26px;
-        margin-top: -5px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        background-color: $color;
-        color: $menu-icon-color;
-        border-color: $color;
-        .dropwdown-menu-icon {
-          margin-bottom: 6px;
+      .dropdown {
+        button.dropdown-btn {
+          align-items: center;
+          padding: 0px $gap;
+          font-size: 16px;
+          width: 38px;
+          height: 26px;
+          margin-top: -5px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          background-color: $color;
+          color: $menu-icon-color;
+          border-color: $color;
+          .dropdown-menu-icon {
+            margin-bottom: 5px;
+          }
+          &:after {
+            border: none;
+          }
+          &:hover {
+            background-color: rgba(173, 173, 173, 0.247);
+            color: rgba(0, 0, 0, 0.733);
+          }
         }
-        &:after {
-          border: none;
-        }
-        &:hover {
-          background-color: rgba(173, 173, 173, 0.247);
-          color: rgba(0, 0, 0, 0.733);
-        }
-      }
-      .dropdown-menu {
-        padding: 0;
-        min-width: 210px;
-        margin: 1px;
-        a.dropdown-item {
-          padding: 0.1rem 1rem;
-          font-size: 14px;
-          &:not(:last-child) {
-            border-bottom: 1px solid rgb(238, 238, 238);
+        .dropdown-menu {
+          padding: 0;
+          min-width: 210px;
+          margin: 1px;
+          a.dropdown-item {
+            padding: 0.1rem 1rem;
+            font-size: 14px;
+            &:not(:last-child) {
+              border-bottom: 1px solid rgb(238, 238, 238);
+            }
           }
         }
       }
     }
   }
   footer {
-    display: flex;
     color: $add-icon-color;
     padding-left: $gap;
     height: $column-footer-height-fixed;
@@ -75,11 +76,19 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
     border-bottom-left-radius: $element-radius;
     border-bottom-right-radius: $element-radius;
     .footer-action-handle {
-      display: flex;
-      justify-content: space-between;
+      margin-left: $gap;
       cursor: pointer;
       &:hover {
         color: $word-color;
+      }
+      .add-icon {
+        font-size: 20px;
+        padding: 0px 5px;
+        
+        align-items: center;
+      }
+      span {
+        font-size: 16px;
       }
     }
   }
