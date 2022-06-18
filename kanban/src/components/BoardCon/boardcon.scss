@@ -3,7 +3,6 @@
 .app-column-board {
   height: $board-content-height;
   display: flex;
-  // margin: 0 $gap $gap;
   overflow-x: auto;
   overflow-y: hidden;
   &:after {
@@ -22,8 +21,7 @@
   }
 
   .not-found {
-    padding: $gap;
-    color: rgb(217, 30, 24);
+    color: red; //default when using initial datasets
   }
 
   //column dnd styles

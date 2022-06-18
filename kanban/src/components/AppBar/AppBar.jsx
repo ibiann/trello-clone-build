@@ -17,7 +17,7 @@ function AppBar() {
               <div className="items-left searching-bar">
                 <InputGroup className="group-searching">
                   <FormControl className="input-search" placeholder="Jump to..."/>
-                <InputGroup.Text className="input-icon-searching-bar"><SearchOutlined /></InputGroup.Text>
+                  <SearchOutlined className="input-icon-searching-bar"/>
                 </InputGroup>
               </div>
             </div>
