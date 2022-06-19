@@ -1,18 +1,12 @@
 @import "../../settings";
 
-$app-bar-text-color: rgb(34, 47, 62);
-$app-bar-left-text-color-hover: rgba(247, 241, 227,1.0);
-$app-bar-right-text-color-hover: rgba(247, 241, 227,1.0);
-$searching-input-bar: rgb(245, 246, 250);
-$searching-input-bar-icon: rgb(220, 221, 225);
-
 .app-navbar-top {
   height: $app-navbar-height;
   display: flex;
   overflow: hidden;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
+  background-color: $app-bar-background-color;
   backdrop-filter: blur(20px);
   color: $app-bar-text-color;
   .appbar-container {
@@ -21,6 +15,7 @@ $searching-input-bar-icon: rgb(220, 221, 225);
       display: flex;
       height: 100%;
       width: 100%;
+      background-color: transparent;
       flex-direction: row;
       align-items: center;
       .items-left {
@@ -38,29 +33,33 @@ $searching-input-bar-icon: rgb(220, 221, 225);
         &.searching-bar {
           padding: 6px 18px;
           .group-searching {
-            height: 19px;
+            height: 24px;
             .input-search {
               max-height: 100%;
               background-color: $searching-input-bar;
-              color: inherit;
+              color: rgb(47, 54, 64);
               border: none;
               font-size: 14px;
               &::placeholder {
-                color: $app-bar-text-color;
+                color: $app-bar-placeholder-color;
                 opacity: 1;
               }
             }
             .input-icon-searching-bar {
-              padding: 2px 5px 3px 5px;
+              padding: 6px 5px 4px 7px;
               background-color: $searching-input-bar-icon;   
               border-radius: 3px;           
               cursor: pointer;
             }
           }
         }
+        .text-element {
+          font-weight: 700;
+        }
       }
     }
     .app-branding {
+      padding: 2px 0;
       &:hover {
         background-color: transparent;
       }
@@ -71,10 +70,11 @@ $searching-input-bar-icon: rgb(220, 221, 225);
           color: lighten($color: aliceblue, $amount: 10)
         }
         img.logo-top {
-          width: 30px;
+          width: 29px;
+          border-radius: 8px;
         }
         span.logo-app-name {
-          font-size: 12px;
+          font-size: 13px;
           text-transform: uppercase;
           margin-left: $gap;
           font-weight: bold;
