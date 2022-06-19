@@ -12,7 +12,7 @@ import './boardcon.scss'
 import Column from "../Column/Column";
 import { mapOrder } from "../../util/sort";
 import { applyDrag } from "../../util/dragDrop";
-// import { initialData } from "../../actions/initialData";
+import { initialData } from "../../actions/initialData";
 import {
   fetchBoard,
   createColumn,
@@ -34,16 +34,16 @@ function BoardCon() {
   const onNewListTitleChange = (e) => setNewListTitle(e.target.value);
 
   useEffect(() => {
-    // const boardDB = initialData.boards.find((board) => board._id === "board-1");
-    const boardId = "62a228910422ccc16a5579c9";
+    const boardDB = initialData.boards.find((board) => board.id === "board-1");
+    /* const boardId = "62a228910422ccc16a5579c9";
     fetchBoard(boardId).then((board) => {
       console.log(board);
       setBoard(board);
       setColumns(mapOrder(board.columns, board.columnOrder, "_id"));
     });
-  }, []);
+  }, []); */
 
-    /* if (boardDB) {
+    if (boardDB) {
       setBoard(boardDB);
       //sort columns
       boardDB.columns.sort((a, b) => {
@@ -53,7 +53,7 @@ function BoardCon() {
       });
       setColumns(mapOrder(boardDB.columns, boardDB.columnOrder, "_id"));
     }
-  }, []); */
+  }, []);
 
   useEffect(() => {
     if (newListInputRef && newListInputRef.current) {
